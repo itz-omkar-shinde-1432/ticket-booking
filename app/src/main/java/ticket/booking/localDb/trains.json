@@ -1,43 +1,62 @@
 [
-   {
-  "train_id": "bacs",
-  "train_no": 12345,
-  "seats": [
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0]
-  ],
-  "station_times": {
-    "Pune": "13:50:00",
-    "Thane": "13:50:00",
-    "Mumbai": "13:50:00"
-  },
-     "stations": [
-       "Pune",
-       "Thane",
-       "Mumbai"
-       ]
-     },
-
-
   {
-    "train_id": "bacs",
-    "train_no": 12345,
+    "train_id": "exp001",
+    "train_no": 12301,
     "seats": [
-      [0,0,0,0,0,0],
-      [0,0,0,0,0,0],
-      [0,0,0,0,0,0],
-      [0,0,0,0,0,0]
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]
     ],
     "station_times": {
-      "Pune": "13:50:00",
-      "Thane": "13:50:00",
-      "Mumbai": "13:50:00"
+      "Pune": "08:00:00",
+      "Nashik": "10:30:00",
+      "Mumbai": "13:00:00"
     },
     "stations": [
       "Pune",
-      "Thane",
+      "Nashik",
       "Mumbai"
     ]
+  },
+  {
+    "train_id": "exp002",
+    "train_no": 12302,
+    "seats": [
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]
+    ],
+    "station_times": {
+      "Delhi": "06:00:00",
+      "Agra": "08:00:00",
+      "Kanpur": "11:00:00"
+    },
+    "stations": [
+      "Delhi",
+      "Agra",
+      "Kanpur"
+    ]
+  },
+  {
+    "train_id": "exp003",
+    "train_no": 12303,
+    "seats": [
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]
+    ],
+    "station_times": {
+      "Chennai": "09:00:00",
+      "Bangalore": "13:00:00",
+      "Mysore": "16:00:00"
+    },
+    "stations": [
+      "Chennai",
+      "Bangalore",
+      "Mysore"
+    ]
+  }
 ]

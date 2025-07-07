@@ -1,29 +1,44 @@
-[
-  {
-    "user_id": "1234",
-    "name": "Omkar Shinde",
-    "hashedPassword": "abc12345",
-    "tickets_booked": [
-      {
-        "source": "Pune",
-        "destination": "Mumbai",
-        "date_of_travel": "2025-08-08T18:30:00Z",
-        "train": {
-           "train_id": "bacs",
-          "train_no": "12345",
-           "seats": [
-             [0,0,0,0,0,0],
-             [0,0,0,0,0,0],
-             [0,0,0,0,0,0],
-             [0,0,0,0,0,0]
-           ],
-          "stations": {
-            "Pune": "13:50:00",
-            "Thane": "13:50:00",
-            "Mumbai": "13:50:00"
-          }
-        }
-      }
-    ]
-  }
-]
+[ {
+  "username" : "omkar",
+  "user_id" : "1234",
+  "password" : null,
+  "hashed_password" : "$2a$10$Ozsz3TLq1XLy37zujA4CXOCV1mcLgClJmHjoWlklIoXDJGdwmaXf6",
+  "tickets_booked" : [ {
+    "ticket_id" : "TICKET123",
+    "user_id" : "1234",
+    "source" : "Pune",
+    "destination" : "Mumbai",
+    "date_of_travel" : "2025-08-08T18:30:00Z",
+    "train" : {
+      "train_id" : "bacs",
+      "train_no" : "12345",
+      "seats" : [ [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ],
+      "station_times" : {
+        "Pune" : "13:50:00",
+        "Thane" : "14:30:00",
+        "Mumbai" : "16:00:00"
+      },
+      "stations" : [ "Pune", "Thane", "Mumbai" ],
+      "train_info" : "Train ID: bacs Train No: 12345"
+    },
+    "ticket_info" : "Ticket ID: TICKET123 belongs to User 1234 from Pune to Mumbai on 2025-08-08T18:30:00Z"
+  } ]
+}, {
+  "username" : "onkar",
+  "user_id" : "8c5679a9-b72a-4255-b7e2-4d8bd4967d1d",
+  "password" : null,
+  "hashed_password" : "$2a$10$xK.pVj4iyBDurerwXdZApuR96Aq2s4AhTA.MYRl.gkecmuFrkBsjK",
+  "tickets_booked" : [ ]
+}, {
+  "username" : "ok",
+  "user_id" : "a949cfbc-64fe-447c-ad87-57a6134ebb42",
+  "password" : "ok",
+  "hashed_password" : "$2a$10$wYdvxkO4juk086mtbaV2le9Lqq98HWvPHOOfw7rfMmk2Ci.0UZtx6",
+  "tickets_booked" : [ ]
+}, {
+  "username" : "live",
+  "user_id" : "164f9679-542a-44a0-aff1-3852aeab0a9c",
+  "password" : "livee",
+  "hashed_password" : "$2a$10$UhySS0BBioXqn9xZ3gbJoe4GpqMLE1Fbv4E7xgFWplb0O66Yml0Fy",
+  "tickets_booked" : [ ]
+} ]

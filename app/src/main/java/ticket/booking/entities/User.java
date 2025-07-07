@@ -1,3 +1,4 @@
+// User.java
 package ticket.booking.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,31 +8,39 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a User in the booking system,
+ * with credentials and booked ticket history.
+ */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class User {
 
     private String username;
     private String userId;
-    private String password;
+    private String password;              // Plain password (used temporarily before hashing)
     private String hashedPassword;
     private List<Ticket> ticketsBooked;
 
-    // Constructor
-    public User(){}
+    // Default constructor required for Jackson
+    public User() {}
 
-    public User(String username, String password, String hashedPassword, List<Ticket> ticketsBooked, String userId){
+    // Full constructor
+    public User(String username, String password, String hashedPassword, List<Ticket> ticketsBooked, String userId) {
         this.username = username;
         this.userId = userId;
         this.password = password;
         this.hashedPassword = hashedPassword;
-        this.ticketsBooked = ticketsBooked != null ? ticketsBooked : Collections.emptyList(); // Safe handling for null lists
+        this.ticketsBooked = ticketsBooked != null ? ticketsBooked : Collections.emptyList(); // Prevent null list issues
     }
 
-    // Getter's
+    // Getters
     public String getUsername() {
         return username;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public String getPassword() {
@@ -46,24 +55,18 @@ public class User {
         return ticketsBooked;
     }
 
-    public void printTickets(){
-//        System.out.println("Debugged User.java -> printTickets()");
-        if(ticketsBooked.isEmpty()){
+    // Prints all booked tickets for the user
+    public void printTickets() {
+        if (ticketsBooked.isEmpty()) {
             System.out.println("No tickets booked yet!");
-            return;
-        }else {
+        } else {
             for (Ticket ticket : ticketsBooked) {
                 System.out.println(ticket.getTicketInfo());
             }
         }
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-
-    // Setter's
+    // Setters
     public void setUsername(String username) {
         this.username = username;
     }
@@ -72,11 +75,11 @@ public class User {
         this.userId = userId;
     }
 
-    public void setTicketsBooked(List<Ticket> ticketsBooked) {
-        this.ticketsBooked = ticketsBooked;
-    }
-
     public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
+    }
+
+    public void setTicketsBooked(List<Ticket> ticketsBooked) {
+        this.ticketsBooked = ticketsBooked;
     }
 }
