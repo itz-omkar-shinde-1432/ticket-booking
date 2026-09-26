@@ -1,4 +1,3 @@
-// TrainService.java
 package ticket.booking.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -21,7 +20,9 @@ public class TrainService {
 
     private List<Train> trainList;
     private final ObjectMapper objectMapper;
-    private static final String TRAIN_DB_PATH = "app/src/main/java/ticket/booking/localDb/trains.json";
+
+    private static final String TRAIN_DB_PATH =
+            "src/main/java/ticket/booking/localDb/trains.json";
 
     // Constructor loads train data from the JSON file
     public TrainService() throws IOException {
@@ -32,7 +33,10 @@ public class TrainService {
 
     // Loads all trains from the JSON file
     public void loadTrains() throws IOException {
-        trainList = objectMapper.readValue(new File(TRAIN_DB_PATH), new TypeReference<List<Train>>() {});
+        trainList = objectMapper.readValue(
+                new File(TRAIN_DB_PATH),
+                new TypeReference<List<Train>>() {}
+        );
     }
 
     /**
@@ -43,6 +47,7 @@ public class TrainService {
             return trainList.stream()
                     .filter(train -> validTrain(train, source, destination))
                     .collect(Collectors.toList());
+
         } catch (Exception ex) {
             System.out.println("Error in searchTrains: " + ex.getMessage());
             return null;
@@ -53,8 +58,10 @@ public class TrainService {
      * Adds a new train or updates an existing one if trainId already exists.
      */
     public void addTrain(Train newTrain) {
+
         Optional<Train> existingTrain = trainList.stream()
-                .filter(train -> train.getTrainId().equalsIgnoreCase(newTrain.getTrainId()))
+                .filter(train -> train.getTrainId()
+                        .equalsIgnoreCase(newTrain.getTrainId()))
                 .findFirst();
 
         if (existingTrain.isPresent()) {
@@ -68,9 +75,16 @@ public class TrainService {
     // Saves the current train list to the JSON file
     private void saveTrainListToFile() {
         try {
-            objectMapper.writeValue(new File(TRAIN_DB_PATH), trainList);
+            objectMapper.writeValue(
+                    new File(TRAIN_DB_PATH),
+                    trainList
+            );
+
         } catch (IOException e) {
-            System.out.println("Failed to save train list to file: " + e.getMessage());
+            System.out.println(
+                    "Failed to save train list to file: "
+                            + e.getMessage()
+            );
         }
     }
 
@@ -78,50 +92,98 @@ public class TrainService {
      * Updates an existing train in the list.
      */
     public void updateTrain(Train updatedTrain) {
+
         OptionalInt index = IntStream.range(0, trainList.size())
-                .filter(i -> trainList.get(i).getTrainId().equalsIgnoreCase(updatedTrain.getTrainId()))
+                .filter(i -> trainList.get(i)
+                        .getTrainId()
+                        .equalsIgnoreCase(updatedTrain.getTrainId()))
                 .findFirst();
 
         if (index.isPresent()) {
-            trainList.set(index.getAsInt(), updatedTrain);
+
+            trainList.set(
+                    index.getAsInt(),
+                    updatedTrain
+            );
+
             saveTrainListToFile();
+
         } else {
-            addTrain(updatedTrain); // If not found, treat as new
+
+            addTrain(updatedTrain);
         }
     }
 
-    // Validates if the train passes through source → destination in correct order
-    private boolean validTrain(Train train, String source, String destination) {
-        List<String> stationList = train.getStations();
-        int sourceIndex = stationList.indexOf(source);
-        int destinationIndex = stationList.indexOf(destination);
+    /**
+     * Validates if the train passes through
+     * source → destination in correct order.
+     */
+    private boolean validTrain(
+            Train train,
+            String source,
+            String destination) {
 
-        try {
-            return sourceIndex != -1 && destinationIndex != -1 && sourceIndex < destinationIndex;
-        } catch (Exception e) {
-            System.out.println("Error in validTrain: " + e.getMessage());
-            return false;
-        }
+        List<String> stationList = train.getStations();
+
+        // Find source station ignoring case and extra spaces
+        int sourceIndex = IntStream.range(0, stationList.size())
+                .filter(i -> stationList.get(i)
+                        .equalsIgnoreCase(source.trim()))
+                .findFirst()
+                .orElse(-1);
+
+        // Find destination station ignoring case and extra spaces
+        int destinationIndex = IntStream.range(0, stationList.size())
+                .filter(i -> stationList.get(i)
+                        .equalsIgnoreCase(destination.trim()))
+                .findFirst()
+                .orElse(-1);
+
+        // Both stations must exist
+        // and source must come before destination
+        return sourceIndex != -1
+                && destinationIndex != -1
+                && sourceIndex < destinationIndex;
     }
 
     /**
      * Books a seat (row, seat) on a given train if it's available.
      */
-    public boolean bookTickets(Train train, int row, int seat) {
+    public boolean bookTickets(
+            Train train,
+            int row,
+            int seat) {
+
         List<List<Integer>> seats = train.getSeats();
 
         try {
-            if (row >= 0 && row < seats.size() && seat >= 0 && seat < seats.get(row).size()) {
+
+            if (row >= 0
+                    && row < seats.size()
+                    && seat >= 0
+                    && seat < seats.get(row).size()) {
+
                 if (seats.get(row).get(seat) == 0) {
+
                     seats.get(row).set(seat, 1);
+
                     train.setSeats(seats);
+
                     addTrain(train);
+
                     return true;
                 }
             }
+
             return false;
+
         } catch (Exception e) {
-            System.out.println("Error in bookTickets: " + e.getMessage());
+
+            System.out.println(
+                    "Error in bookTickets: "
+                            + e.getMessage()
+            );
+
             return false;
         }
     }

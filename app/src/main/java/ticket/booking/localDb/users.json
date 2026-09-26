@@ -41,4 +41,16 @@
   "password" : "livee",
   "hashed_password" : "$2a$10$UhySS0BBioXqn9xZ3gbJoe4GpqMLE1Fbv4E7xgFWplb0O66Yml0Fy",
   "tickets_booked" : [ ]
+}, {
+  "username" : "omkarshinde",
+  "user_id" : "3955f63e-7a28-469b-befa-3653c344968d",
+  "password" : "oss",
+  "hashed_password" : "$2a$10$Um/ya4WRX8JPDlHBK2h6AOnaccHYpU23qF5MWGkKHbX2t/xB4Meme",
+  "tickets_booked" : [ ]
+}, {
+  "username" : "hydra",
+  "user_id" : "9328ee2b-b553-4843-97a0-c3eb7f126f0a",
+  "password" : "123",
+  "hashed_password" : "$2a$10$rV.Pg0JyGQ6beg2UXHtQiOwt2IWLXNNbffJdglIOX8XfKPVocmxS.",
+  "tickets_booked" : [ ]
 } ]

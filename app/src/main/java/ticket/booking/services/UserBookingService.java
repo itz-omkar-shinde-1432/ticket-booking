@@ -24,7 +24,7 @@ public class UserBookingService {
     private User user;
     private List<User> userList;
     private final ObjectMapper objectMapper;
-    private final String USERS_PATH = "app/src/main/java/ticket/booking/localDb/users.json";
+    private final String USERS_PATH = "src/main/java/ticket/booking/localDb/users.json";
 
     // Constructor: Loads all users from the file
     public UserBookingService() throws IOException {
